@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title%}書籍詳細{% endblock %}
+
+{% block content %}
+    <div class="card">
+        <h5 class="card-header">{{ object.title }}</h5>
+        <div class="catd-body">
+            <p class="card-text">{{ object.text }}</p>
+            <div class="border">
+                {% for review in object.review_set.all %}
+                <div>
+                    <h3>{{ review.title }}</h3>
+                    <div class="px-2">
+                        <span>(投稿ユーザー: {{ review.user.username }})</span>
+                        <h6>評価:{{ review.rate }}</h6>
+                        <p>{{ review.text }}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            <a href="{% url "review" object.pk %}" class="btn btn-primary">レビューをする</a>
+            <a href="{% url "list-book" %}" class="btn btn-primary">一覧へ</a>
+            <a href="{% url "update-book" object.pk %}" class="btn btn-primary">編集する</a>
+            <a href="{% url "delete-book" object.pk %}" class="btn btn-danger">削除する</a>
+            <h6 class="card-title">{{ object.category }}</h6>
+        </div>
+    </div>
+{% endblock %}

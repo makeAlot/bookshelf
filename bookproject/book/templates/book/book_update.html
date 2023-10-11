@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block title %}書籍修正{% endblock title %}
+
+{% block content %}
+  <form method='post' enctype="multipart/form-data">{% csrf_token %}
+    {{ form.as_p }}
+    <botton type='submit'>修正する</botton>
+  </form>
+{% endblock content %}

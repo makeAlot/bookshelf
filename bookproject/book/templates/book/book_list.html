@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}書籍一覧{% endblock %}
+
+{% block content %}
+  {% for item in object_list %}
+  <div class="card">
+    <h5 class="cardd-header">{{ item.title }}</h5>
+    <div class="card-body">
+      <p class"card-text">{{ item.text }}</p>
+      <a href="{% url 'detail-book' item.pk %}" class="btn btn-primary">詳細へ</a>
+      <h6 class="card-title">{{ item.category }}</h6>
+    </div>
+  </div>
+  {% endfor %}
+  {% include "book/components/pagination.html" %}
+{% endblock %}

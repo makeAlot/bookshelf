@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}レビュー機能{% endblock title %}
+{% block h1 %}レビュー投稿{% endblock h1 %}
+
+{% block content %}
+    <form method="post" class="">
+        {% csrf_token %}
+        <label>
+            対象書籍
+        </label>
+        <input class="" value="{{ book.title }}" readonly>
+        <label>
+            タイトル
+        </label>
+        <input class="" name="title">
+        <label>
+            本文
+        </label>
+        <textarea class="" name="text" rows="3"></textarea>
+        <label>
+            星の数
+        </label>
+        <select class="" name="rate">
+            <option value="0">0 (最低)</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3(普通)</option>
+            <option value="4">4</option>
+            <option value="5">5(最高)</option>
+        </select>
+        <input type="hidden" name="book" value="{{ book.id }}">
+        <button type="submit" class="">投稿する</button>
+    </form>
+{% endblock content %}
